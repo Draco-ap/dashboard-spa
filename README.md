@@ -31,8 +31,3 @@ git add index.html css/layout.css && git commit -m "feat: layout grid, bento y f
 git add css/components.css js/ui.js js/modal.js js/drawer.js && git commit -m "feat: componentes, estados, drawer y modal"
 git add js/router.js js/theme.js js/app.js && git commit -m "feat: router SPA, modo oscuro y vistas"
 ```
-
-## Entregables
-- `docs/prototipo-ux.md` / PDF: persona, wireframes y flujo del prototipo (falta pegar tu enlace de Figma)
-- Este repositorio: código modular + historial de commits
-- `docs/reporte.md` / PDF: capturas y checklist de IxD (falta tu nombre y el enlace del repo)
