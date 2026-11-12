@@ -1,0 +1,70 @@
+/* Botones: Default · Hover · Focus · Disabled · Loading */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:44px;min-height:44px;padding:0 16px;font:inherit;font-weight:600;color:var(--text);background:var(--surface);border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:background var(--t),transform var(--t),border-color var(--t),filter var(--t)}
+.btn.icon{padding:0;width:44px}
+.btn:hover:not(:disabled),.btn.is-hover{background:var(--bg);border-color:var(--primary);transform:translateY(-1px)}
+.btn:focus-visible,.btn.is-focus{outline:3px solid var(--ring);outline-offset:2px}
+.btn:active:not(:disabled){transform:none}
+.btn.primary{background:var(--primary);border-color:var(--primary);color:var(--on-primary)}
+.btn.danger{background:var(--bad);border-color:var(--bad);color:var(--on-primary)}
+.btn.primary:hover:not(:disabled),.btn.primary.is-hover{background:var(--primary-h)}
+.btn.danger:hover:not(:disabled),.btn.danger.is-hover{background:var(--bad);filter:brightness(.9)}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.btn[aria-busy=true]{opacity:.85;cursor:progress}
+.btn[aria-busy=true]::before{content:"";width:16px;height:16px;border:2px solid currentColor;border-top-color:transparent;border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Campos de formulario (mismos 5 estados) */
+.field{display:flex;flex-direction:column;gap:4px;margin-bottom:14px}
+label{font-weight:600;font-size:.9rem}
+.ctl{width:100%;min-height:44px;padding:8px 12px;font:inherit;color:var(--text);background:var(--surface);border:1px solid var(--border);border-radius:8px;transition:border-color var(--t),box-shadow var(--t)}
+.ctl:hover:not(:disabled),.ctl.is-hover{border-color:var(--primary)}
+.ctl:focus-visible,.ctl.is-focus{outline:3px solid var(--ring);outline-offset:2px;border-color:var(--primary)}
+.ctl:disabled{opacity:.5;cursor:not-allowed}
+.ctl:user-invalid{border-color:var(--bad)}
+.ctl.is-loading{opacity:1;background:linear-gradient(90deg,var(--surface),var(--border),var(--surface)) 0 0/200% 100%;animation:shimmer 1s linear infinite}
+@keyframes shimmer{to{background-position:-200% 0}}
+
+/* Switch */
+.switch{position:relative;display:flex;align-items:center;gap:12px;min-height:44px;margin-bottom:14px;font-weight:400;font-size:1rem;cursor:pointer}
+.switch input{position:absolute;left:0;width:44px;height:44px;margin:0;opacity:0;cursor:pointer}
+.track{position:relative;flex:none;width:44px;height:26px;border-radius:13px;background:var(--border);transition:background var(--t)}
+.track::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform var(--t)}
+.switch input:checked+.track{background:var(--primary)}
+.switch input:checked+.track::after{transform:translateX(18px)}
+.switch input:focus-visible+.track{outline:3px solid var(--ring);outline-offset:2px}
+
+/* Navegación */
+.sidebar a{display:flex;align-items:center;gap:10px;min-height:44px;padding:0 12px;border-radius:8px;color:var(--text);text-decoration:none;transition:background var(--t)}
+.sidebar a:hover{background:var(--bg)}
+.sidebar a[aria-current=page]{background:var(--primary);color:var(--on-primary)}
+
+/* Tarjetas con microinteracción */
+.card{padding:16px;background:var(--surface);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow)}
+.bento .card{transition:transform var(--t) ease,box-shadow var(--t) ease}
+.bento .card:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgb(0 0 0/.18)}
+.big{margin:0;font-size:2rem;font-weight:700;line-height:1.2}
+.bar{height:8px;margin-top:10px;overflow:hidden;border-radius:4px;background:var(--border)}
+.bar span{display:block;width:0;height:100%;background:var(--primary);transition:width 350ms ease}
+
+/* Tabla y estados */
+.tablewrap{padding:0;overflow-x:auto}
+table{width:100%;border-collapse:collapse}
+th,td{padding:10px 12px;text-align:left;white-space:nowrap;border-bottom:1px solid var(--border)}
+thead th{font-size:.85rem;color:var(--muted)}
+tbody tr:last-child>*{border-bottom:0}
+.acts{display:flex;gap:8px}
+.badge{display:inline-block;padding:2px 10px;font-size:.85rem;font-weight:600;border:1px solid currentColor;border-radius:99px}
+.badge.ok{color:var(--ok)}.badge.warn{color:var(--warn)}.badge.bad{color:var(--bad)}
+
+/* Zona 3: backdrop, drawer, modal, toast */
+.backdrop{position:fixed;inset:0;z-index:30;background:rgb(5 8 20/.55);opacity:0;pointer-events:none;transition:opacity var(--t)}
+.backdrop.show{opacity:1;pointer-events:auto}
+.drawer{position:fixed;inset:0 0 0 auto;z-index:40;width:min(400px,100%);padding:16px;overflow:auto;background:var(--surface);border-left:1px solid var(--border);transform:translateX(100%);transition:transform 300ms ease}
+.drawer.open{transform:none}
+.modal{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:16px;opacity:0;pointer-events:none;transition:opacity var(--t)}
+.modal.open{opacity:1;pointer-events:auto}
+.modal .box{width:100%;max-width:420px;padding:20px;background:var(--surface);border:1px solid var(--border);border-radius:12px;transform:scale(.94) translateY(10px);transition:transform 300ms ease}
+.modal.open .box{transform:none}
+.modal h2{font-size:1.15rem;color:var(--text)}
+#toast{position:fixed;left:50%;bottom:16px;z-index:60;margin:0;padding:10px 16px;color:var(--on-primary);background:var(--text);border-radius:8px;opacity:0;transform:translate(-50%,16px);pointer-events:none;transition:opacity var(--t),transform var(--t)}
+#toast.show{opacity:1;transform:translate(-50%,0)}
