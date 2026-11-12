@@ -1,0 +1,4 @@
+/* Paleta funcional: claro por defecto, oscuro por preferencia del sistema o toggle manual */
+:root{--bg:#f3f5fa;--surface:#fff;--text:#1a2236;--muted:#58627a;--border:#d5dbe8;--primary:#2b4fd8;--primary-h:#2140b5;--on-primary:#fff;--ok:#0f7a56;--warn:#a85f00;--bad:#c4263a;--ring:#0b6bff;--shadow:0 1px 3px rgb(0 0 0/.12);--t:250ms;--hh:60px}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0d1220;--surface:#171e31;--text:#e7ecf7;--muted:#9aa6bf;--border:#2a3351;--primary:#7b97ff;--primary-h:#9bb0ff;--on-primary:#0d1220;--ok:#3ccf9b;--warn:#f0b040;--bad:#ff7083;--ring:#8ab4ff;--shadow:0 1px 3px rgb(0 0 0/.5)}}
+:root[data-theme=dark]{--bg:#0d1220;--surface:#171e31;--text:#e7ecf7;--muted:#9aa6bf;--border:#2a3351;--primary:#7b97ff;--primary-h:#9bb0ff;--on-primary:#0d1220;--ok:#3ccf9b;--warn:#f0b040;--bad:#ff7083;--ring:#8ab4ff;--shadow:0 1px 3px rgb(0 0 0/.5)}

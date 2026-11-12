@@ -1,0 +1,16 @@
+/* Reglas base: pensadas primero para móvil */
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}
+h1{font-size:1.5rem;margin:.2em 0 .6em}
+h2{font-size:1rem;margin:0 0 .4em;color:var(--muted);font-weight:600}
+a{color:var(--primary)}
+p{margin:.3em 0}
+small{font-size:.85rem}
+.muted{color:var(--muted)}
+.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.lbl{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.skip{position:absolute;left:-999px}
+.skip:focus{left:8px;top:8px;z-index:99;background:var(--surface);padding:10px 14px;border-radius:8px}
+:focus-visible{outline:3px solid var(--ring);outline-offset:2px}
+main:focus{outline:none}
+@media(prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation-duration:.01ms!important}}
