@@ -1,0 +1,41 @@
+/* Layout macro (Grid) + alineaciones de una dimensión (Flexbox). Mobile-first. */
+.app{display:grid;min-height:100vh;grid-template-columns:minmax(0,1fr);grid-template-areas:"header" "main"}
+.topbar{grid-area:header;position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:8px;min-height:var(--hh);padding:8px 12px;background:var(--surface);border-bottom:1px solid var(--border)}
+.brand{font-size:1.1rem}
+.spacer{flex:1}
+.sidebar{position:fixed;inset:var(--hh) auto 0 0;width:240px;z-index:15;display:flex;flex-direction:column;gap:4px;padding:12px;background:var(--surface);border-right:1px solid var(--border);transform:translateX(-100%);visibility:hidden;transition:transform var(--t) ease,visibility 0s linear var(--t)}
+.sidebar.open{transform:none;visibility:visible;transition-delay:0s}
+main{grid-area:main;min-width:0;padding:16px}
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:4px 16px;min-height:24px;margin-bottom:8px;font-size:.9rem}
+.crumbs ol{display:flex;gap:6px;margin:0;padding:0;list-style:none}
+.crumbs li+li::before{content:"›";margin-right:6px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px}
+.row.end{justify-content:flex-end;margin-top:8px}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.toolbar{display:flex;flex-direction:column}
+.pager{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:12px}
+.bento{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
+.chart{display:block;width:100%;height:140px}
+
+@media(min-width:768px){
+  .lbl{position:static;width:auto;height:auto;overflow:visible;clip-path:none}
+  caption.lbl{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+  main{padding:24px}
+  .bento{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .wide,.full{grid-column:1/-1}
+  .toolbar{flex-direction:row;gap:12px}
+  .toolbar .field{min-width:220px}
+}
+@media(min-width:1024px){
+  .app{grid-template-columns:240px minmax(0,1fr);grid-template-areas:"header header" "sidebar main"}
+  #menuBtn{display:none}
+  .sidebar{position:sticky;inset:auto;top:var(--hh);grid-area:sidebar;align-self:start;height:calc(100vh - var(--hh));transform:none;visibility:visible}
+  /* Bento Grid: tarjetas de distinto tamaño */
+  .bento{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .wide{grid-column:span 2}
+  .tall{grid-row:span 2}
+  .full{grid-column:1/-1}
+  .tall .chart{height:200px}
+}
+.crumbs a{display:inline-flex;align-items:center;min-height:44px}
+.crumbs ol{align-items:center}
